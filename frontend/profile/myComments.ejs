@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <title>My Comments</title>
+      </head>
+<body>
+  <%- include('../header',id); -%>
+      <div class="container">
+<% comments.forEach(comment=>{ %>
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title"><%= comment.username %></h4>
+            <div class="card-text mb-2">
+                <%= comment.body %>
+            </div>
+            <div class="text-right">
+              <form action="<%= comment._id %>?_method=DELETE" method="POST" class="d-inline">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+            </div>
+        </div>
+    </div>
+<% }) %>
+</body>
+</html>

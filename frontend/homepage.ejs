@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Homepage</title>
+</head>
+<body>
+    <div>
+    <%- include('header',id); -%>
+    </div>
+    <div class="container">
+        <div class="mb-3">
+        </div>
+        <h1 class="mb-4">Blog Articles</h1>
+        <h5 class="mb-4">Welcome <%= name%>   </h5>
+
+        <% articles.forEach(article=>{ %>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h4 class="card-title"><%= article.title %></h4>
+                    <div class="card-subtitle text-muted mb-1 small"><%= article.createdAt.toLocaleDateString() %></div>
+                    <div class="card-text mb-2">
+                        <%= article.description %>
+                    </div>
+                    <a href="article/<%= article.slug %>"
+                      class="btn btn-info">Read more</a>  
+                </div>
+            </div>
+        <% }) %>
+        
+        <div class="float-right mt-3">
+            <a href="/login/logout" class="btn btn-secondary">Logout</a>
+        </div>
+        
+    </div>
+</body>
+</html>
